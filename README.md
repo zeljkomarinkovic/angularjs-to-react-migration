@@ -248,15 +248,13 @@ export default App;
 
 ## View-independent business logic: Services
 
-Right now, the `InvoiceController` contains all logic of our example. When the application grows it is a good practice to move view-independent logic from the controller into a [service](https://docs.angularjs.org/guide/services), so it can be reused by other parts of the application as well. Later on, we could also change that service to load the exchange rates from the web, e.g. by calling the [exchangeratesapi.io](https://exchangeratesapi.io/) exchange rate API, without changing the controller.
+Right now, the `InvoiceController` contains all logic of our example. When the application grows it is a good practice to move view-independent logic from the controller into a [service](https://docs.angularjs.org/guide/services), so it can be reused by other parts of the application as well.
 
-Let's refactor our example and move the currency conversion into a service in another file:
+```js
+/******************
+*** finance2.js ***
+*******************/
 
-  Edit in Plunker
-
-[finance2.js](https://docs.angularjs.org/)[invoice2.js](https://docs.angularjs.org/)[index.html](https://docs.angularjs.org/)
-
-```
 angular.module('finance2', [])
 .factory('currencyConverter', function() {
   var currencies = ['USD', 'EUR', 'CNY'];
@@ -275,6 +273,85 @@ angular.module('finance2', [])
   };
 });
 ```
+
+```js
+/******************
+*** invoice2.js ***
+*******************/
+
+angular.module('invoice2', ['finance2'])
+.controller('InvoiceController', ['currencyConverter', function InvoiceController(currencyConverter) {
+  this.qty = 1;
+  this.cost = 2;
+  this.inCurr = 'EUR';
+  this.currencies = currencyConverter.currencies;
+
+  this.total = function total(outCurr) {
+    return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);
+  };
+  this.pay = function pay() {
+    window.alert('Thanks!');
+  };
+}]);
+```
+
+```html
+<!----------------
+--- index.html ---
+------------------>
+
+<div ng-app="invoice2" ng-controller="InvoiceController as invoice">
+  <b>Invoice:</b>
+  <div>
+    Quantity: <input type="number" min="0" ng-model="invoice.qty" required >
+  </div>
+  <div>
+    Costs: <input type="number" min="0" ng-model="invoice.cost" required >
+    <select ng-model="invoice.inCurr">
+      <option ng-repeat="c in invoice.currencies">{{c}}</option>
+    </select>
+  </div>
+  <div>
+    <b>Total:</b>
+    <span ng-repeat="c in invoice.currencies">
+      {{invoice.total(c) | currency:c}}
+    </span><br>
+    <button class="btn" ng-click="invoice.pay()">Pay</button>
+  </div>
+</div>
+```
+
+A direct counterpart to a service in vanilla React is a component. As opposed to Angular, React components don't have to exist in DOM. Similarly to services and components/directives in Angular, the separation of concerns in React can be provided with [container and presentational components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0). Container component can handle business logic, while presentation logic goes to presentational component.
+
+Since React favours functional approach, reused code doesn't necessarily goes to a class and can be expressed with functional composition instead.
+
+Dependency injection pattern is provided with component hierarchy in React. It can be implemented in several common ways to make data (like service instance) available for entire application or a part of it, e.g. via deeply passed props, context API, third-party state management (Redux, MobX).
+
+```jsx
+import React, { useState, useEffect } from 'react'
+
+const fetchData = () => fetch(...).then(res => res.json());
+const processData = data => ...;
+const fetchProcessedData = () => fetchData().then(processData);
+
+const ContainerComponent = () => {
+  const [state, setState] = useState({});
+
+  useEffect(() => {
+    fetchProcessedData().then((data) => {
+      setState({ data });
+    });
+  }, [fetchProcessedData]);
+
+  return state.data && <PresentationalComponent data={data} />;
+};
+```
+
+`PresentationalComponent` is injected with a dependency through `data` prop.
+
+The same example would be possible to implement with Angular components but this would result in unwanted DOM elements.
+
+When Redux is used for state management, things like fetching (side effects) are handled by extensions that serve this purpose, e.g. redux-thunk, redux-saga, etc. While synchronous processing is handled by reducers.
 
 ## Accessing the backend
 

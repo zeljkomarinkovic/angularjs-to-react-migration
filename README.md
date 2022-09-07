@@ -49,8 +49,8 @@ import ReactDOM from 'react-dom/client'
 
 function App() {
   const [values, setValues] = useState({
-    quantity: 0,
-    cost: 0,
+    qty: 1,
+    cost: 2,
   });
   
 
@@ -68,9 +68,9 @@ function App() {
         Quantity:{" "}
         <input
           type="number"
-          name="quantity"
+          name="qty"
           min={0}
-          value={values.quantity}
+          value={values.qty}
           onChange={handleChange}
         />
       </div>
@@ -85,7 +85,7 @@ function App() {
         />
       </div>
       <div>
-        <b>Total:</b> {values.quantity * values.cost}
+        <b>Total:</b> {values.qty * values.cost}
       </div>
     </div>
   );
@@ -152,7 +152,7 @@ angular.module('invoice1', [])
 </div>
 ```
 
-this converted to react would look like simple component
+This converted to react would look like simple component. By wrapping input fileds and button we obtain controll over that form and if field is required and empty it will ask for some value or you would not be able to "pay"
 
 ```jsx
 import { useState } from "react";
@@ -302,5 +302,3 @@ angular.module('invoice3', ['finance3'])
 ```
 
 What changed? Our `currencyConverter` service of the `finance` module now uses the [`$http`](https://docs.angularjs.org/api/ng/service/$http), a built-in service provided by AngularJS for accessing a server backend. `$http` is a wrapper around [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) and [JSONP](http://en.wikipedia.org/wiki/JSONP) transports.
-
-## Test

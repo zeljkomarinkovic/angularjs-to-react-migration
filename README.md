@@ -161,32 +161,10 @@ I think this is point where these tools are very different and your decision can
 
 Performance
 
-<table>  
-  <caption>npm install</caption>  
-  <tr>  
- 
-    <th>#</th>  
-    <th>time npm install</th>  
-  </tr>  
-  <tr>  
-    <td>CRA</td>  
-    <td><code>
-    209 packages are looking for funding<br> 
-    run `npm fund` for details<br>
-    npm install  3.61s user 0.25s system 136% cpu 2.829 total
-    </code></td>  
-  </tr>  
-  <tr>  
-    <td>Vite</td>  
-    <td><code>
-    8 packages are looking for funding<br>
-    run `npm fund` for details<br>
-    npm install  0.76s user 0.10s system 107% cpu 0.794 total
-    </code></td>  
-  </tr>  
-</table>
-
-
+| name | time                                                                                                                                  |
+|------|-------------------------------------------------------------------------------------------------------------------------------------- |
+| CRA  | <code>209 packages are looking for funding<br>run `npm fund` for details <br>npm install 3.61s user 0.25s system 136% cpu 2.829 total |
+ | Vite | <code>8 packages are looking for funding  <br>run `npm fund` for details <br> npm install  0.76s user 0.10s system 107% cpu 0.794 total <code> |
 
 ---
 

@@ -82,8 +82,109 @@ pnpm looks like npm at first because their CLI usage is similar, but managing de
 ### Build tools
 
 #### create-react-app
-#### create-next-app
+[CRA](https://create-react-app.dev)
+
+Create React App is an officially supported way to create single-page React applications. It offers a modern build setup with no configuration.
+
+You **don’t** need to install or configure tools like webpack or Babel. They are preconfigured and hidden so that you can focus on the code.
+
+Create a project, and you’re good to go.
+
+-   **One Dependency:** There is only one build dependency. It uses webpack, Babel, ESLint, and other amazing projects, but provides a cohesive curated experience on top of them.
+    
+-   **No Configuration Required:** You don't need to configure anything. A reasonably good configuration of both development and production builds is handled for you so you can focus on writing code.
+    
+-   **No Lock-In:** You can “eject” to a custom setup at any time. Run a single command, and all the configuration and build dependencies will be moved directly into your project, so you can pick up right where you left off.
+
+---
+
+###### References 
+<sub>[CRA repo](https://github.com/facebook/create-react-app)</sub>
+
+---
+
+
+#### NextJS 
+
+[Next.js](nextjs.org) - The React Framework for Production
+
+ Next.js is a React **framework** that gives you building blocks to create web applications.
+
+By framework, we mean Next.js handles the tooling and configuration needed for React, and provides additional structure, features, and optimizations for your application.
+
+You can use React to build your UI, then incrementally adopt Next.js features to solve common application requirements such as routing, data fetching, integrations - all while improving the developer and end-user experience.
+
+Whether you’re an individual developer or part of a larger team, you can leverage React and Next.js to build fully interactive, highly dynamic, and performant web applications.
+
+In the next lessons, we will discuss how you can get started with React and Next.js.
+
+---
+###### references 
+<sub>[NextJS documentation](https://nextjs.org/docs/getting-started)</sub>
+
+---
+
 #### Vite 
+
+[Vite](vitejs.dev) - Next Generation Frontend Tooling
+
+Vite (French word for "quick", pronounced [`/vit/`](https://cdn.jsdelivr.net/gh/vitejs/vite@main/docs/public/vite.mp3), like "veet") is a new breed of frontend build tooling that significantly improves the frontend development experience. It consists of two major parts:
+
+-   A dev server that serves your source files over [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), with [rich built-in features](https://vitejs.dev/guide/features.html) and astonishingly fast [Hot Module Replacement (HMR)](https://vitejs.dev/guide/features.html#hot-module-replacement).
+    
+-   A [build command](https://vitejs.dev/guide/build.html) that bundles your code with [Rollup](https://rollupjs.org/), pre-configured to output highly optimized static assets for production.
+    
+
+In addition, Vite is highly extensible via its [Plugin API](https://vitejs.dev/guide/api-plugin.html) and [JavaScript API](https://vitejs.dev/guide/api-javascript.html) with full typing support.
+
+
+---
+###### references 
+<sub>[Vite documentation](https://vite.dev/guide)</sub>
+
+---
+
+##### Server Side Rendering
+
+| CRA | Next.js | Vite|
+| ---------------------- | ---------------------- | ---------------------- |
+| CRA doesn't support SSR out of the box.  However, you can still configure it. It just takes more effort to setup SSR with your preferred server and configuration. The development team doesn't have plans to support this in the near future. They [suggest other tools](https://github.com/facebook/create-react-app/blob/2da5517689b7510ff8d8b0148ce372782cb285d7/README.md#popular-alternatives) for this use case. | NextJs has [different types for SSR](https://nextjs.org/docs/basic-features/data-fetching). It supports SSR out of the box. <br> <ul><li>Static generation: fetch data at build time. This works best for use cases like blogs or static websites </li><li> Server side rendering: fetch data and render for each requests. You have to do this when you need to serve different view for different users.</li></ul> | |
+
+---
+
+##### Configurability
+
+I think this is point where these tools are very different and your decision can depend on this factor
+
+| CRA | Next.js | Vite|
+| ---- | ----- | ------ |
+| Create React App doesn't leave you a lot of room to configure it.  Configurations like webpack config cannot be changed unless you stray away from normal CRA way (eject, rescripts, rewired, craco). Basically, you have to use what's configured in `react-scripts` which is the core of CRA. | Almost everything is [configurable](https://nextjs.org/docs/api-reference/next.config.js/introduction).If you check the example [NextJs templates](https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest), you can see files like `babelrc`, `jest.config`, `eslintrc` etc  | |
+that you can configure.
+
+---
+
+##### Maintainability
+
+| CRA | Next.js | Vite|
+| ---- | ----- | ------ |
+| CRA is very opinionated.  If you keep updated with the releases of CRA, it's not hard to maintain. | NextJs is also well maintained. They release regular updates. | |
+
+---
+
+##### Typescript
+
+| CRA | Next.js | Vite|
+| ---- | ----- | ------ |
+|Supports out of the box. You can initialize CRA app with typescript with  `npx create-react-app my-app --template typescript` | [Supports typescript](https://nextjs.org/docs/basic-features/typescript) out of the box. Start with configurations for typescript with `touch tsconfig.json` | |
+
+---
+
+##### Hooks support
+
+Latest version of both CRA and NextJs installs a version of React that supports hooks. You can also upgrade to the latest version easily
+
+---
+
 
 
 ```

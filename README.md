@@ -159,37 +159,34 @@ I think this is point where these tools are very different and your decision can
 
 ---
 
-Performance
+#### Performance
 
-<table>
-  <tr>
-    <th>name</th>
-    <th>time npm install</th>
-  </tr>
-  <tr>
-    <td>CRA</td>
-    <td>
-        <pre>
-        209 packages are looking for funding
-        run <code>npm fund<code> for details
-        npm install 3.61s user 0.25s system 136% cpu 2.829 total
-        <pre>
-    </td>
-  </tr>
-  <tr>
-    <td>Vite</td>
-    <td>
-        <pre>
-        8 packages are looking for funding
-        run `npm fund` for details
-        npm install 0.76s user 0.10s system 107% cpu 0.794 total
-        <pre>
-    </td>
-  </tr>
-</table>
+---
+`npm install`
+
+First thing we usually do after creating new project is install packages. Measurement done with `time` command `time npm install`. Command is run on fresh installment of both tool.
+
+| name | time npm install |
+| ------ | ------------------ |
+| CRA | ![[Pasted image 20220908135926.png]]  |
+| Vite | ![[Pasted image 20220908135843.png]] |
+
+---
+`npm run build`
+
+The production build is another topic worth measuring
+
+| name | time npm run build |
+| ------ | ------------------ |
+| CRA | ![[Pasted image 20220908140134.png]]   |
+| Vite | ![[Pasted image 20220908135708.png]] |
 
 ---
 
+#### Conclusion
+
+Overall the migration from Create React App to Vite is very smooth.  
+From the above comparison results, Vite is really speedy and provides an awesome development experience. It benefits both development and production.
 
 
 ```

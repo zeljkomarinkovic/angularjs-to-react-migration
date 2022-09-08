@@ -30,7 +30,7 @@ You can install pnpm as an npm package with `$ npm i -g pnpm`. You can also [
 
 `$ corepack prepare pnpm@6.24.2 --activate`.
 
-## Conclusion
+#### Conclusion
 
 The current state of package managers is great. We have virtually attained feature parity among all major package managers. But still, they do differ under the hood quite a bit.
 

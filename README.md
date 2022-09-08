@@ -184,76 +184,19 @@ The production build is another topic worth measuring
 ---
 
 #### Conclusion
-
-Overall the migration from Create React App to Vite is very smooth.  
+ 
 From the above comparison results, Vite is really speedy and provides an awesome development experience. It benefits both development and production.
 
+---
 
-```
+### Packages that we probably going to need/use
 
-HTTP-client     $http                           Axios or Fetch
-
-Initial load:       index.php + ShellRendrer                index.html with async loaded settings
-
-constants:      angular.module("app").constant("$user", userObject);    app.provide('$user', userObject);
-
-Typescript      -                           Simple start, ikke strict!
-
-Router          angular.ui-router                   Vue Router Library
-
-Events          $emit, $broadcast                   refs, $emit
-
-Translation     AngularJS translate                 VueJS i18n
-
-Shared data     AngularJS Factories (Services)              Composables with state management
-
-Common functions    Bedriftsnet.Utils                   Bedriftsnet.Utils   
-
-Filters         AngularJS filters                   VueJS filters
-
-Directives      AngularJS directives                    VueJS directives
-
-Websocket       AngularJS WebSocket                 ?
-
-Controllers     AngularJS controllers                   VueJs components
-
-Byggescript     -                           Yarn build som del av GitHub Actions
-
-Diverse angular plugins
-
-    sortable-view
-
-    angular-acl                             ?
-
-Other plugins
-
-    gridstack
-
-    highcharts
-
-    jscrollpane                             ?
-
-    litepicker
-
-    jssip
-
-    libphonenumber
-
-    moment
-
-Fremtidige ønsker
-
-Separere backend og frontend
-
-Flytt Insight Dashboard til egen site
-
-Flytt Besøksregistrering til egen site
-
-Testing (JEST ?)
-
-Linting
-
-```
+| function     | name                            |
+| ------------ | ------------------------------- | 
+| HTTP-client  | Axios or Fetch api              |
+| Router       | react-router                    |
+| Translations | react-translate + react-i18next |
+| Forms        | Formik                          |
 
 ## Conceptual Overview
 

@@ -166,20 +166,20 @@ I think this is point where these tools are very different and your decision can
 
 First thing we usually do after creating new project is install packages. Measurement done with `time` command `time npm install`. Command is run on fresh installment of both tool.
 
-| name | time npm install |
-| ------ | ------------------ |
-| CRA | ![[Pasted image 20220908135926.png]]  |
-| Vite | ![[Pasted image 20220908135843.png]] |
+| name | time npm install                                                                                                |
+| ---- | --------------------------------------------------------------------------------------------------------------- |
+| CRA  | ![image](https://user-images.githubusercontent.com/23746207/189117348-f53a5eab-77fa-4189-b381-3121c46b7580.png) |
+| Vite | ![image](https://user-images.githubusercontent.com/23746207/189117711-5fc33e3d-5ef0-4956-83aa-ae07c8979da6.png) |
 
 ---
 `npm run build`
 
 The production build is another topic worth measuring
 
-| name | time npm run build |
-| ------ | ------------------ |
-| CRA | ![[Pasted image 20220908140134.png]]   |
-| Vite | ![[Pasted image 20220908135708.png]] |
+| name | time npm run build                                                                                              |
+| ---- | --------------------------------------------------------------------------------------------------------------- |
+| CRA  | ![image](https://user-images.githubusercontent.com/23746207/189117201-21cd1d9f-130f-4e46-867e-aaa0e7a6a8fb.png) |
+| Vite | ![image](https://user-images.githubusercontent.com/23746207/189117568-859a961b-b907-45ab-ac2c-d9c6edbd3581.png) |
 
 ---
 

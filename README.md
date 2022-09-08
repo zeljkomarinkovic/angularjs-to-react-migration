@@ -103,27 +103,6 @@ Create a project, and you’re good to go.
 
 ---
 
-
-#### NextJS 
-
-[Next.js](nextjs.org) - The React Framework for Production
-
- Next.js is a React **framework** that gives you building blocks to create web applications.
-
-By framework, we mean Next.js handles the tooling and configuration needed for React, and provides additional structure, features, and optimizations for your application.
-
-You can use React to build your UI, then incrementally adopt Next.js features to solve common application requirements such as routing, data fetching, integrations - all while improving the developer and end-user experience.
-
-Whether you’re an individual developer or part of a larger team, you can leverage React and Next.js to build fully interactive, highly dynamic, and performant web applications.
-
-In the next lessons, we will discuss how you can get started with React and Next.js.
-
----
-###### references 
-<sub>[NextJS documentation](https://nextjs.org/docs/getting-started)</sub>
-
----
-
 #### Vite 
 
 [Vite](vitejs.dev) - Next Generation Frontend Tooling
@@ -144,11 +123,13 @@ In addition, Vite is highly extensible via its [Plugin API](https://vitejs.dev/
 
 ---
 
+#### Overview
+
 ##### Server Side Rendering
 
-| CRA | Next.js | Vite|
-| ---------------------- | ---------------------- | ---------------------- |
-| CRA doesn't support SSR out of the box.  However, you can still configure it. It just takes more effort to setup SSR with your preferred server and configuration. The development team doesn't have plans to support this in the near future. They [suggest other tools](https://github.com/facebook/create-react-app/blob/2da5517689b7510ff8d8b0148ce372782cb285d7/README.md#popular-alternatives) for this use case. | NextJs has [different types for SSR](https://nextjs.org/docs/basic-features/data-fetching). It supports SSR out of the box. <br> <ul><li>Static generation: fetch data at build time. This works best for use cases like blogs or static websites </li><li> Server side rendering: fetch data and render for each requests. You have to do this when you need to serve different view for different users.</li></ul> | |
+| CRA | Vite|
+| ---------------------- | ---------------------- |
+| CRA doesn't support SSR out of the box.  However, you can still configure it. It just takes more effort to setup SSR with your preferred server and configuration. The development team doesn't have plans to support this in the near future. They [suggest other tools](https://github.com/facebook/create-react-app/blob/2da5517689b7510ff8d8b0148ce372782cb285d7/README.md#popular-alternatives) for this use case. | A lot plugins that will allow server side rendering  |
 
 ---
 
@@ -156,32 +137,56 @@ In addition, Vite is highly extensible via its [Plugin API](https://vitejs.dev/
 
 I think this is point where these tools are very different and your decision can depend on this factor
 
-| CRA | Next.js | Vite|
-| ---- | ----- | ------ |
-| Create React App doesn't leave you a lot of room to configure it.  Configurations like webpack config cannot be changed unless you stray away from normal CRA way (eject, rescripts, rewired, craco). Basically, you have to use what's configured in `react-scripts` which is the core of CRA. | Almost everything is [configurable](https://nextjs.org/docs/api-reference/next.config.js/introduction).If you check the example [NextJs templates](https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest), you can see files like `babelrc`, `jest.config`, `eslintrc` etc  | |
-that you can configure.
+| CRA | Vite|
+| ---- | ------ |
+| Create React App doesn't leave you a lot of room to configure it.  Configurations like webpack config cannot be changed unless you stray away from normal CRA way (eject, rescripts, rewired, craco). Basically, you have to use what's configured in `react-scripts` which is the core of CRA. | Almost everything is [configurable](https://vitejs.dev/config) and extendable with a lot of vite plugins |
 
 ---
 
 ##### Maintainability
 
-| CRA | Next.js | Vite|
-| ---- | ----- | ------ |
-| CRA is very opinionated.  If you keep updated with the releases of CRA, it's not hard to maintain. | NextJs is also well maintained. They release regular updates. | |
+| CRA | Vite|
+| ---- | ------ |
+| CRA is very opinionated.  If you keep updated with the releases of CRA, it's not hard to maintain. | Vite is well maintained with regular updates from big community |
 
 ---
 
 ##### Typescript
 
-| CRA | Next.js | Vite|
-| ---- | ----- | ------ |
-|Supports out of the box. You can initialize CRA app with typescript with  `npx create-react-app my-app --template typescript` | [Supports typescript](https://nextjs.org/docs/basic-features/typescript) out of the box. Start with configurations for typescript with `touch tsconfig.json` | |
+| CRA | Vite|
+| ---- | ------ |
+|Supports out of the box. You can initialize CRA app with typescript with <br> `npx create-react-app my-app --template typescript` | Supports typescript out of the box. You can initialize vite app with typescript on installation or just make new `touch tsconfig.json`  config file |
 
 ---
 
-##### Hooks support
+Performance
 
-Latest version of both CRA and NextJs installs a version of React that supports hooks. You can also upgrade to the latest version easily
+<table>  
+  <caption>npm install</caption>  
+  <tr>  
+ 
+    <th>#</th>  
+    <th>time npm install</th>  
+  </tr>  
+  <tr>  
+    <td>CRA</td>  
+    <td><code>
+    209 packages are looking for funding<br> 
+    run `npm fund` for details<br>
+    npm install  3.61s user 0.25s system 136% cpu 2.829 total
+    </code></td>  
+  </tr>  
+  <tr>  
+    <td>Vite</td>  
+    <td><code>
+    8 packages are looking for funding<br>
+    run `npm fund` for details<br>
+    npm install  0.76s user 0.10s system 107% cpu 0.794 total
+    </code></td>  
+  </tr>  
+</table>
+
+
 
 ---
 

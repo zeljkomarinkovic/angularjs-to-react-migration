@@ -44,6 +44,8 @@ Thus, pnpm has introduced some new concepts to store dependencies more efficient
 
 pnpm looks like npm at first because their CLI usage is similar, but managing dependencies is much different; pnpm’s method leads to better performance and the best disk-space efficiency. Yarn Classic is still very popular, but it’s considered legacy software and support might be dropped in the near future. Yarn Berry PnP is the new kid on the block, but hasn’t fully realized its potential to revolutionize the package manager landscape once again
 
+---
+
 ###### References
 <sub> [LogRocket blog](https://blog.logrocket.com/javascript-package-managers-compared) </sub>
 

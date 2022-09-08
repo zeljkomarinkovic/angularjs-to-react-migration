@@ -9,12 +9,32 @@ Three major players exist in the field of package managers today:
 #### npm
 [npm](https://github.com/npm/cli) - a JavaScript package manager
 
+npm is the world's largest software registry. Open source developers from every continent use npm to share and borrow packages, and many organizations use npm to manage private development as well.
+
+npm consists of three distinct components:
+
+-   the website
+-   the Command Line Interface (CLI)
+-   the registry
+
+Use the [_website_](https://npmjs.com/) to discover packages, set up profiles, and manage other aspects of your npm experience. For example, you can set up [organizations](https://www.npmjs.com/features) to manage access to public or private packages.
+
+The [_CLI_](https://docs.npmjs.com/cli/npm) runs from a terminal, and is how most developers interact with npm.
+
+The [_registry_](https://docs.npmjs.com/misc/registry) is a large public database of JavaScript software and the meta-information surrounding it.
+
 Npm is shipped with Node.js, so no extra steps is needed. Besides downloading the [Node.js installer](https://nodejs.org/en/download/) for your OS, it has become common practice to use CLI tools for managing software versions.
 
 ---
 
 #### Yarn
 [Yarn](https://github.com/yarnpkg/berry) - Yarn is a modern package manager split into various packages.
+
+Yarn is a package manager for your code. It allows you to use and share code with other developers from around the world. Yarn does this quickly, securely, and reliably so you don't ever have to worry.
+
+Yarn allows you to use other developers' solutions to different problems, making it easier for you to develop your software. If you have problems, you can report issues or contribute back on [GitHub](https://github.com/yarnpkg/berry), and when the problem is fixed, you can use Yarn to keep it all up to date.
+
+Code is shared through something called a **package**. A package contains all the code being shared as well as a `package.json` file (called a **manifest**) which describes the package.
 
 You can Yarn in different ways, e.g., as an npm package or via Corepack. [Corepack](https://nodejs.org/api/corepack.html) was created by the folks of Yarn Berry. The initiative was originally named [package manager manager (pmm)](https://github.com/nodejs/TSC/issues/904) 🤯and [merged with Node](https://github.com/nodejs/node/pull/35398) in LTS v16.
 

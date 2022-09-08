@@ -153,18 +153,40 @@ I think this is point where these tools are very different and your decision can
 
 ##### Typescript
 
-| CRA | Vite|
-| ---- | ------ |
+| CRA                                                                                                                              | Vite                                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |Supports out of the box. You can initialize CRA app with typescript with <br> `npx create-react-app my-app --template typescript` | Supports typescript out of the box. You can initialize vite app with typescript on installation or just make new `touch tsconfig.json`  config file |
 
 ---
 
 Performance
 
-| name | time                                                                                                                                  |
-|------|-------------------------------------------------------------------------------------------------------------------------------------- |
-| CRA  | <pre>209 packages are looking for funding <p>run `npm fund` for details <p>npm install 3.61s user 0.25s system 136% cpu 2.829 total<pre> |
- | Vite | <pre>8 packages are looking for funding  <p>run `npm fund` for details <p>npm install 0.76s user 0.10s system 107% cpu 0.794 total <pre> |
+<table>
+  <tr>
+    <th>name</th>
+    <th>time npm install</th>
+  </tr>
+  <tr>
+    <td>CRA</td>
+    <td>
+        <pre>
+        209 packages are looking for funding
+        run <code>npm fund<code> for details
+        npm install 3.61s user 0.25s system 136% cpu 2.829 total
+        <pre>
+    </td>
+  </tr>
+  <tr>
+    <td>Vite</td>
+    <td>
+        <pre>
+        8 packages are looking for funding
+        run `npm fund` for details
+        npm install 0.76s user 0.10s system 107% cpu 0.794 total
+        <pre>
+    </td>
+  </tr>
+</table>
 
 ---
 

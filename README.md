@@ -6,17 +6,17 @@
 
 Three major players exist in the field of package managers today:
 
-#### <span style="color:red">npm</span>
+#### npm
 [npm](https://github.com/npm/cli) - a JavaScript package manager
 
 Npm is shipped with Node.js, so no extra steps is needed. Besides downloading the [Node.js installer](https://nodejs.org/en/download/) for your OS, it has become common practice to use CLI tools for managing software versions.
-#### <span style="color:blue">Yarn</span>
+#### Yarn
 [Yarn](https://github.com/yarnpkg/berry) - Yarn is a modern package manager split into various packages.
 
 You can Yarn in different ways, e.g., as an npm package or via Corepack. [Corepack](https://nodejs.org/api/corepack.html) was created by the folks of Yarn Berry. The initiative was originally named [package manager manager (pmm)](https://github.com/nodejs/TSC/issues/904) 🤯and [merged with Node](https://github.com/nodejs/node/pull/35398) in LTS v16.
 
 With the help of Corepack, you don’t have to install npm’s alternative package managers “separately” because Node includes Yarn Classic, Yarn Berry, and pnpm binaries as shims. These shims allow users to run Yarn and pnpm commands without having to explicitly install them first, and without cluttering the Node distribution.
-#### <span style="color:yellow">pnpm (performant npm)</span>
+#### pnpm (performant npm)
 [pnpm (performant npm)](https://github.com/pnpm/pnpm) - Fast, disk space efficient package manager
 
 pnpm uses a content-addressable filesystem to store all files from all module directories on a disk. When using npm or Yarn, if you have 100 projects using lodash, you will have 100 copies of lodash on disk. With pnpm, lodash will be stored in a content-addressable storage, so:
@@ -43,7 +43,9 @@ Thus, pnpm has introduced some new concepts to store dependencies more efficient
 pnpm looks like npm at first because their CLI usage is similar, but managing dependencies is much different; pnpm’s method leads to better performance and the best disk-space efficiency. Yarn Classic is still very popular, but it’s considered legacy software and support might be dropped in the near future. Yarn Berry PnP is the new kid on the block, but hasn’t fully realized its potential to revolutionize the package manager landscape once again
 
 ###### References
-<sub>[LogRocket blog](https://blog.logrocket.com/javascript-package-managers-compared)</sub>
+<sub> [LogRocket blog](https://blog.logrocket.com/javascript-package-managers-compared) </sub>
+
+---
 
 ### Build tools
 

@@ -163,8 +163,8 @@ Performance
 
 | name | time                                                                                                                                  |
 |------|-------------------------------------------------------------------------------------------------------------------------------------- |
-| CRA  | <code>209 packages are looking for funding<br>run `npm fund` for details <br>npm install 3.61s user 0.25s system 136% cpu 2.829 total |
- | Vite | <code>8 packages are looking for funding  <br>run `npm fund` for details <br> npm install  0.76s user 0.10s system 107% cpu 0.794 total <code> |
+| CRA  | <pre>209 packages are looking for funding <p>run `npm fund` for details <p>npm install 3.61s user 0.25s system 136% cpu 2.829 total<pre> |
+ | Vite | <pre>8 packages are looking for funding  <p>run `npm fund` for details <p>npm install 0.76s user 0.10s system 107% cpu 0.794 total <pre> |
 
 ---
 

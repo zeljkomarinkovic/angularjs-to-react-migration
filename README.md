@@ -217,6 +217,266 @@ This section briefly touches on all of the important parts of AngularJS using a 
 | [Module]([https://docs.angularjs.org/guide/concepts#module](https://docs.angularjs.org/guide/concepts#module))            | a container for the different parts of an app including controllers, services, filters, directives which configures the Injector |                                                                                                                                                                                 | 
 | [Service]([https://docs.angularjs.org/guide/concepts#service](https://docs.angularjs.org/guide/concepts#service))          | reusable business logic independent of views                                                                                    | Services / Helpers                                                                                                                                                              |
 
+### Directives
+
+#### ng-if
+
+```html
+<a ng-if="isLoggedIn" href="/logout">Log Out</a>
+```
+
+In React, use the ternary operator (`?`) or a logical AND (`&&`)..
+
+```javascript
+// Ternary operator (?):
+function LogoutButton() {
+  return isLoggedIn ?
+    <a href="/logout">Log Out</a> : null;
+}
+
+// Logical AND (&&)
+// Careful: isLoggedIn must be a boolean (or null)!
+// React components must return an element, or null
+function LogoutButton() {
+  return isLoggedIn &&
+    <a href="/logout">Log Out</a>;
+}
+```
+
+#### ng-class
+
+```html
+<p ng-class="computedClass"></p>
+<p ng-class="[class1, class2]"></p>
+<p ng-class="{'has-error': isErrorState}"></p>
+```
+
+React doesn’t provide something like `ng-class`, but there is a great library called [classnames](https://github.com/JedWatson/classnames) that does the same and more. Install it:
+
+```
+npm install classnames
+```
+
+Import it however you like:
+
+```javascript
+import classNames from 'classnames';
+```
+
+Then it supports things like this (from their docs):
+
+```javascript
+// Replace 'classNames' with 'cx' if you imported it that way
+classNames('foo', 'bar'); // => 'foo bar'
+classNames('foo', { bar: true }); // => 'foo bar'
+classNames({ 'foo-bar': true }); // => 'foo-bar'
+classNames({ 'foo-bar': false }); // => ''
+classNames({ foo: true }, { bar: true }); // => 'foo bar'
+classNames({ foo: true, bar: true }); // => 'foo bar'
+
+// lots of arguments of various types
+classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo bar baz quux'
+
+// other falsy values are just ignored
+classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
+```
+
+And use it similarly to `ng-class` (also from their docs):
+
+```javascript
+var classNames = require('classnames');
+
+var Button = React.createClass({
+  // ...
+  render () {
+    var btnClass = classNames({
+      'btn': true,
+      'btn-pressed': this.state.isPressed,
+      'btn-over': !this.state.isPressed && this.state.isHovered
+    });
+    return <button className={btnClass}>{this.props.label}</button>;
+  }
+});
+```
+
+#### ng-repeat
+
+```html
+<ul>
+  <li ng-repeat="item in items">{{ item.name }}</li>
+</ul>
+```
+
+In React, use Array’s built-in `map` function to turn an array into elements.
+
+Pay attention to the special `key` prop passed to the `li`. This is necessary for React’s diffing algorithm to work correctly, and you’ll get warnings in the console if you forget the `key`.
+
+```javascript
+var List = React.createClass({
+  render: function() {
+    var items = this.props.items;
+    return (
+      <ul>
+        {items.map(function(item) {
+          return <li key={item.id}>{item.name}</li>
+        })}
+      </ul>
+    );
+  }
+});
+```
+
+You can write it as a “stateless functional component” with a little help from ES6’s destructuring and arrow functions, the syntax is even lighter:
+
+```javascript
+function List({items}) {
+  return (
+    <ul>
+      {items.map(item => 
+        <li key={item.id}>{item.name}</li>
+      )}
+    </ul>
+  );
+}
+```
+
+Either way, use it in a component like this:
+
+```javascript
+function People() {
+  var people = [{id: 1, name: 'Joe'}, {id: 2, name: 'Sue'}];
+  return <List items={people}/>;
+}
+```
+
+#### ng-click
+
+```html
+<a ng-click="alertHello()">Say Hello</a>
+```
+
+In React, pass a function to the `onClick` prop:
+
+```javascript
+var HelloAlerter = React.createClass({
+  alertHello: function() {
+    alert('hello!');
+  },
+  render: function() {
+    return <a onClick={this.alertHello}>Say Hello</a>;
+  }
+});
+```
+
+#### ng-switch
+
+```html
+<div ng-switch="selection">
+    <div ng-switch-when="settings">Settings Div</div>
+    <div ng-switch-when="home">Home Span</div>
+    <div ng-switch-default>default</div>
+</div>
+```
+
+In React, just use a plain old JavaScript `switch` statement. It’s common to extract this into a function to keep the `render` function tidy.
+
+```javascript
+var Switcher = React.createClass({
+  getChoice: function() {
+    switch(this.props.selection) {
+      case 'settings':
+        return <div>Settings Div</div>;
+      case 'home':
+        return <span>Home Span</span>;
+      default:
+        return <div>default</div>;
+    }
+  },
+  render: function() {
+    return <div>{this.getChoice()}</div>
+  }
+});
+```
+
+#### ng-style
+
+```html
+<div ng-style="{color: 'red', 'font-size': '20px'}">
+  this is big and red
+</div>
+```
+
+In React, use the `style` prop, which gets translated into the `style` attribute on the actual DOM element.
+
+```javascript
+var StyleDemo = React.createClass({
+  render: function() {
+    return (
+      <div style={{color: 'red', fontSize: 20}}>
+        this is big and red
+      </div>
+    );
+  }
+});
+```
+
+Alternatively, with the style split out as an object:
+
+```javascript
+var StyleDemo = React.createClass({
+  render: function() {
+    var styles = {color: 'red', fontSize: 20};
+    return (
+      <div style={styles}>
+        this is big and red
+      </div>
+    );
+  }
+});
+```
+
+#### ng-change
+
+In Angular, you can respond to changes in an input with `ng-change`.
+
+In React, you can do the same with the `onChange` event, similar to how we passed a function to `onClick` above.
+
+However, there’s a difference, and it’s a big one: when your `onChange` handler is called, _nothing has been done yet_. You type a letter, React tells you about the change, and then its job is done. It’s literally _just_ telling you that a change occurred, and is _not_ updating the input automatically to reflect that change.
+
+So how do you make an input actually, you know, work? You need to update the state, and pass that state back into the input. It’s a feedback loop.
+
+```javascript
+var AnInput = React.createClass({
+  getInitialState: function() {
+    return { value: '' };
+  },
+  handleChange: function(event) {
+    this.setState({ value: event.target.value });
+  },
+  render: function() {
+    return (
+      <input onChange={this.handleChange} value={this.state.value} />
+    );
+  }
+});
+```
+
+Here’s how that data flow works:
+
+![Animated Input Update Sequence](https://daveceddia.com/images/react-input-update-animation.gif)
+
+#### ng-href, ng-cloak
+
+You don’t need these anymore! React won’t show flashes of unpopulated content like Angular sometimes does.
+
+#### ng-controller
+
+This isn’t necessary in React, since components combine the rendering (the “template”) with the logic. In effect, the component _is_ the controller.
+
+Just because the view and the logic are combined, though, doesn’t mean that everything needs to be piled into the `render` function. In fact, that’s a bad idea.
+
+Split the logic into methods on your component, and call those methods from `render`. This is how you’ll keep the `render` function looking more like a nice, readable template and less like a jumble of badly-written PHP :)
+
 ### Data binding
 
 In the following example we will build a form to calculate the costs of an invoice in different currencies.
@@ -550,29 +810,4 @@ The same example would be possible to implement with Angular components but this
 
 When Redux is used for state management, things like fetching (side effects) are handled by extensions that serve this purpose, e.g. redux-thunk, redux-saga, etc. While synchronous processing is handled by reducers.
 
-### Accessing the backend
 
-Let's finish our example by fetching the exchange rates from the [exchangeratesapi.io](https://exchangeratesapi.io/) exchange rate API. The following example shows how this is done with AngularJS:
-
-  Edit in Plunker
-
-[invoice3.js](https://docs.angularjs.org/)[finance3.js](https://docs.angularjs.org/)[index.html](https://docs.angularjs.org/)
-
-```
-angular.module('invoice3', ['finance3'])
-.controller('InvoiceController', ['currencyConverter', function InvoiceController(currencyConverter) {
-  this.qty = 1;
-  this.cost = 2;
-  this.inCurr = 'EUR';
-  this.currencies = currencyConverter.currencies;
-
-  this.total = function total(outCurr) {
-    return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);
-  };
-  this.pay = function pay() {
-    window.alert('Thanks!');
-  };
-}]);
-```
-
-What changed? Our `currencyConverter` service of the `finance` module now uses the [`$http`](https://docs.angularjs.org/api/ng/service/$http), a built-in service provided by AngularJS for accessing a server backend. `$http` is a wrapper around [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) and [JSONP](http://en.wikipedia.org/wiki/JSONP) transports.
